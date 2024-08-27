@@ -2,6 +2,7 @@ package com.ruoyi.panorama.mapper;
 
 import java.util.List;
 import com.ruoyi.panorama.domain.PanoJ2;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * 全景Mapper接口
@@ -58,4 +59,10 @@ public interface PanoJ2Mapper
      * @return 结果
      */
     public int deletePanoJ2ByIds(Long[] ids);
+
+    /**
+     * 获取全部坐标
+     */
+    @Select("select id,latitude,longitude from pano_j2")
+    public List<PanoJ2> getLocation(PanoJ2 panoJ2);
 }

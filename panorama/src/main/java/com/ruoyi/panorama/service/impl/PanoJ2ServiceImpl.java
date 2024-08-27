@@ -90,4 +90,16 @@ public class PanoJ2ServiceImpl implements IPanoJ2Service
     {
         return panoJ2Mapper.deletePanoJ2ById(id);
     }
+
+
+    /**
+     * 获取全部坐标
+     */
+    @Override
+    public List<PanoJ2> getLocation(PanoJ2 panoJ2)
+    {
+        return panoJ2Mapper.getLocation(panoJ2);
+    }
+
+
 }

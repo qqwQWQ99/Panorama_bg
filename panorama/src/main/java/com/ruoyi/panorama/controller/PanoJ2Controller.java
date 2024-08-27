@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
@@ -20,6 +25,9 @@ import com.ruoyi.panorama.domain.PanoJ2;
 import com.ruoyi.panorama.service.IPanoJ2Service;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * 全景Controller
@@ -28,7 +36,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  * @date 2024-08-27
  */
 @RestController
-@RequestMapping("/system/pano")
+@RequestMapping("/panorama/pano")
 public class PanoJ2Controller extends BaseController
 {
     @Autowired
@@ -101,4 +109,38 @@ public class PanoJ2Controller extends BaseController
     {
         return toAjax(panoJ2Service.deletePanoJ2ByIds(ids));
     }
+
+    /**
+     * 获取全部坐标
+     */
+    @PreAuthorize("@ss.hasPermi('system:pano:list')")
+    @GetMapping("/getLocation")
+    public List<PanoJ2> getLocation(PanoJ2 panoJ2)
+    {
+        List<PanoJ2> list = panoJ2Service.getLocation(panoJ2);
+        return list;
+    }
+
+    @GetMapping("/getPano/{filename}")
+    public ResponseEntity<Resource> getImage(@PathVariable String filename) {
+        try {
+            // 获取图片的文件路径
+            Path filePath = Paths.get("path/to/your/images", filename).normalize();
+            Resource resource = new UrlResource(filePath.toUri());
+
+            if (resource.exists() && resource.isReadable()) {
+                // 设置响应头，指定内容类型
+                HttpHeaders headers = new HttpHeaders();
+                headers.add(HttpHeaders.CONTENT_TYPE, Files.probeContentType(filePath));
+
+                // 返回图片资源
+                return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 }

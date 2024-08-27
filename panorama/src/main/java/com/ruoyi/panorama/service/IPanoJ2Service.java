@@ -58,4 +58,9 @@ public interface IPanoJ2Service
      * @return 结果
      */
     public int deletePanoJ2ById(Long id);
+
+    /**
+     * 获取全部坐标
+     */
+    public List<PanoJ2> getLocation(PanoJ2 panoJ2);
 }
