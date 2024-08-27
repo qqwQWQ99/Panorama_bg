@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.panorama.mapper.PanoJ2Mapper">
+    
+    <resultMap type="PanoJ2" id="PanoJ2Result">
+        <result property="id"    column="id"    />
+        <result property="panoramaId"    column="panorama_id"    />
+        <result property="regionCode"    column="region_code"    />
+        <result property="subregionCode"    column="subregion_code"    />
+        <result property="date"    column="date"    />
+        <result property="latitude"    column="latitude"    />
+        <result property="longitude"    column="longitude"    />
+        <result property="elevation"    column="elevation"    />
+        <result property="northRotation"    column="north_rotation"    />
+        <result property="nextId1"    column="next_id_1"    />
+        <result property="nextRegionCode1"    column="next_region_code_1"    />
+        <result property="nextId2"    column="next_id_2"    />
+        <result property="nextRegionCode2"    column="next_region_code_2"    />
+        <result property="geom"    column="geom"    />
+    </resultMap>
+
+    <sql id="selectPanoJ2Vo">
+        select id, panorama_id, region_code, subregion_code, date, latitude, longitude, elevation, north_rotation, next_id_1, next_region_code_1, next_id_2, next_region_code_2, geom from pano_j2
+    </sql>
+
+    <select id="selectPanoJ2List" parameterType="PanoJ2" resultMap="PanoJ2Result">
+        <include refid="selectPanoJ2Vo"/>
+        <where>  
+            <if test="panoramaId != null  and panoramaId != ''"> and panorama_id = #{panoramaId}</if>
+            <if test="regionCode != null  and regionCode != ''"> and region_code = #{regionCode}</if>
+            <if test="subregionCode != null  and subregionCode != ''"> and subregion_code = #{subregionCode}</if>
+            <if test="date != null "> and date = #{date}</if>
+            <if test="latitude != null  and latitude != ''"> and latitude = #{latitude}</if>
+            <if test="longitude != null  and longitude != ''"> and longitude = #{longitude}</if>
+            <if test="elevation != null "> and elevation = #{elevation}</if>
+            <if test="northRotation != null "> and north_rotation = #{northRotation}</if>
+            <if test="nextId1 != null "> and next_id_1 = #{nextId1}</if>
+            <if test="nextRegionCode1 != null  and nextRegionCode1 != ''"> and next_region_code_1 = #{nextRegionCode1}</if>
+            <if test="nextId2 != null "> and next_id_2 = #{nextId2}</if>
+            <if test="nextRegionCode2 != null  and nextRegionCode2 != ''"> and next_region_code_2 = #{nextRegionCode2}</if>
+            <if test="geom != null  and geom != ''"> and geom = #{geom}</if>
+        </where>
+    </select>
+    
+    <select id="selectPanoJ2ById" parameterType="Long" resultMap="PanoJ2Result">
+        <include refid="selectPanoJ2Vo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertPanoJ2" parameterType="PanoJ2">
+        insert into pano_j2
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="panoramaId != null and panoramaId != ''">panorama_id,</if>
+            <if test="regionCode != null and regionCode != ''">region_code,</if>
+            <if test="subregionCode != null and subregionCode != ''">subregion_code,</if>
+            <if test="date != null">date,</if>
+            <if test="latitude != null">latitude,</if>
+            <if test="longitude != null">longitude,</if>
+            <if test="elevation != null">elevation,</if>
+            <if test="northRotation != null">north_rotation,</if>
+            <if test="nextId1 != null">next_id_1,</if>
+            <if test="nextRegionCode1 != null">next_region_code_1,</if>
+            <if test="nextId2 != null">next_id_2,</if>
+            <if test="nextRegionCode2 != null">next_region_code_2,</if>
+            <if test="geom != null">geom,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="panoramaId != null and panoramaId != ''">#{panoramaId},</if>
+            <if test="regionCode != null and regionCode != ''">#{regionCode},</if>
+            <if test="subregionCode != null and subregionCode != ''">#{subregionCode},</if>
+            <if test="date != null">#{date},</if>
+            <if test="latitude != null">#{latitude},</if>
+            <if test="longitude != null">#{longitude},</if>
+            <if test="elevation != null">#{elevation},</if>
+            <if test="northRotation != null">#{northRotation},</if>
+            <if test="nextId1 != null">#{nextId1},</if>
+            <if test="nextRegionCode1 != null">#{nextRegionCode1},</if>
+            <if test="nextId2 != null">#{nextId2},</if>
+            <if test="nextRegionCode2 != null">#{nextRegionCode2},</if>
+            <if test="geom != null">#{geom},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePanoJ2" parameterType="PanoJ2">
+        update pano_j2
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="panoramaId != null and panoramaId != ''">panorama_id = #{panoramaId},</if>
+            <if test="regionCode != null and regionCode != ''">region_code = #{regionCode},</if>
+            <if test="subregionCode != null and subregionCode != ''">subregion_code = #{subregionCode},</if>
+            <if test="date != null">date = #{date},</if>
+            <if test="latitude != null">latitude = #{latitude},</if>
+            <if test="longitude != null">longitude = #{longitude},</if>
+            <if test="elevation != null">elevation = #{elevation},</if>
+            <if test="northRotation != null">north_rotation = #{northRotation},</if>
+            <if test="nextId1 != null">next_id_1 = #{nextId1},</if>
+            <if test="nextRegionCode1 != null">next_region_code_1 = #{nextRegionCode1},</if>
+            <if test="nextId2 != null">next_id_2 = #{nextId2},</if>
+            <if test="nextRegionCode2 != null">next_region_code_2 = #{nextRegionCode2},</if>
+            <if test="geom != null">geom = #{geom},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deletePanoJ2ById" parameterType="Long">
+        delete from pano_j2 where id = #{id}
+    </delete>
+
+    <delete id="deletePanoJ2ByIds" parameterType="String">
+        delete from pano_j2 where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
