@@ -184,7 +184,7 @@
 
             <dependency>
                 <groupId>com.ruoyi</groupId>
-                <artifactId>Panorama_bg</artifactId>
+                <artifactId>panorama</artifactId>
                 <version>${ruoyi.version}</version>
             </dependency>
 
@@ -198,6 +198,7 @@
         <module>ruoyi-quartz</module>
         <module>ruoyi-generator</module>
         <module>ruoyi-common</module>
+        <module>panorama</module>
         <module>panorama</module>
     </modules>
     <packaging>pom</packaging>

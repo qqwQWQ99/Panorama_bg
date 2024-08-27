@@ -115,7 +115,7 @@ public class SwaggerConfig
                 // 设置标题
                 .title("全景查看_接口文档")
                 // 描述
-                .description("描述：用于管理全景模块...")
+                .description("描述：用于管理全景模块")
                 // 作者信息
                 .contact(new Contact(ruoyiConfig.getName(), null, null))
                 // 版本
