@@ -2,6 +2,8 @@ package com.ruoyi.panorama.service;
 
 import java.util.List;
 import com.ruoyi.panorama.domain.PanoJ2;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 
 /**
  * 全景Service接口
@@ -63,4 +65,9 @@ public interface IPanoJ2Service
      * 获取全部坐标
      */
     public List<PanoJ2> getLocation(PanoJ2 panoJ2);
+
+    /**
+     * 预览全景
+     */
+    public ResponseEntity<Resource> getImage(PanoJ2 panoJ2);
 }

@@ -121,26 +121,9 @@ public class PanoJ2Controller extends BaseController
         return list;
     }
 
-    @GetMapping("/getPano/{filename}")
-    public ResponseEntity<Resource> getImage(@PathVariable String filename) {
-        try {
-            // 获取图片的文件路径
-            Path filePath = Paths.get("path/to/your/images", filename).normalize();
-            Resource resource = new UrlResource(filePath.toUri());
-
-            if (resource.exists() && resource.isReadable()) {
-                // 设置响应头，指定内容类型
-                HttpHeaders headers = new HttpHeaders();
-                headers.add(HttpHeaders.CONTENT_TYPE, Files.probeContentType(filePath));
-
-                // 返回图片资源
-                return new ResponseEntity<>(resource, headers, HttpStatus.OK);
-            } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-            }
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    @GetMapping("/getPano")
+    public ResponseEntity<Resource> getImage(PanoJ2 panoJ2) {
+        return panoJ2Service.getImage(panoJ2);
     }
 
 }
