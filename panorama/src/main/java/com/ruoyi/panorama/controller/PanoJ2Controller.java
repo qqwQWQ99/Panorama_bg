@@ -122,8 +122,8 @@ public class PanoJ2Controller extends BaseController
     }
 
     @GetMapping("/getPano")
-    public ResponseEntity<Resource> getImage(PanoJ2 panoJ2) {
-        return panoJ2Service.getImage(panoJ2);
+    public ResponseEntity<Resource> getImage(Long id) {
+        return panoJ2Service.getImage(id);
     }
 
 }

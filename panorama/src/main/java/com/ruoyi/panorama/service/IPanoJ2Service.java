@@ -69,5 +69,5 @@ public interface IPanoJ2Service
     /**
      * 预览全景
      */
-    public ResponseEntity<Resource> getImage(PanoJ2 panoJ2);
+    public ResponseEntity<Resource> getImage(Long id);
 }

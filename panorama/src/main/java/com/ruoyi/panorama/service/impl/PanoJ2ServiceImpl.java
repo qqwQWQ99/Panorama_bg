@@ -122,8 +122,8 @@ public class PanoJ2ServiceImpl implements IPanoJ2Service
      * 获取全部坐标
      */
     @Override
-    public ResponseEntity<Resource> getImage(PanoJ2 panoJ2){
-        PanoJ2 param = panoJ2Mapper.selectPanoJ2ById(panoJ2.getId());
+    public ResponseEntity<Resource> getImage(Long id){
+        PanoJ2 param = panoJ2Mapper.selectPanoJ2ById(id);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         // 使用 SimpleDateFormat 将 Date 对象格式化为字符串
