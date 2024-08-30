@@ -39,11 +39,11 @@ public class PanoJ2 extends BaseEntity
 
     /** 纬度 */
     @Excel(name = "纬度")
-    private Float latitude;
+    private String latitude;
 
     /** 经度 */
     @Excel(name = "经度")
-    private Float longitude;
+    private String longitude;
 
     /** 海拔 */
     @Excel(name = "海拔")
@@ -113,21 +113,21 @@ public class PanoJ2 extends BaseEntity
     {
         return date;
     }
-    public void setLatitude(Float latitude)
+    public void setLatitude(String latitude)
     {
         this.latitude = latitude;
     }
 
-    public Float getLatitude()
+    public String getLatitude()
     {
         return latitude;
     }
-    public void setLongitude(Float longitude)
+    public void setLongitude(String longitude)
     {
         this.longitude = longitude;
     }
 
-    public Float getLongitude()
+    public String getLongitude()
     {
         return longitude;
     }
