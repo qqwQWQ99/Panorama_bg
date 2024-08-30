@@ -5,8 +5,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.List;
-
-import com.ruoyi.panorama.result.PanoImageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -124,10 +122,8 @@ public class PanoJ2ServiceImpl implements IPanoJ2Service
      * 获取全部坐标
      */
     @Override
-    public PanoImageResult getImage(Long id){
-        PanoImageResult result = new PanoImageResult();
+    public ResponseEntity<Resource> getImage(Long id){
         PanoJ2 param = panoJ2Mapper.selectPanoJ2ById(id);
-        result.setPano(param);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         // 使用 SimpleDateFormat 将 Date 对象格式化为字符串
@@ -150,15 +146,12 @@ public class PanoJ2ServiceImpl implements IPanoJ2Service
                 headers.add(HttpHeaders.CONTENT_TYPE, Files.probeContentType(filePath));
 
                 // 返回图片资源
-                result.setImage( new ResponseEntity<>(resource, headers, HttpStatus.OK));
-                return result;
+                return new ResponseEntity<>(resource, headers, HttpStatus.OK);
             } else {
-                result.setImage( ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-                return result;
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
         } catch (Exception e) {
-            result.setImage(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build());
-            return result;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }
