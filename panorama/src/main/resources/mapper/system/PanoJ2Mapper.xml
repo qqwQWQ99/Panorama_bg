@@ -15,14 +15,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="elevation"    column="elevation"    />
         <result property="northRotation"    column="north_rotation"    />
         <result property="nextId1"    column="next_id_1"    />
-        <result property="nextRegionCode1"    column="next_region_code_1"    />
+        <result property="northRotation1"    column="north_rotation_1"    />
         <result property="nextId2"    column="next_id_2"    />
-        <result property="nextRegionCode2"    column="next_region_code_2"    />
+        <result property="northRotation2"    column="north_rotation_2"    />
         <result property="geom"    column="geom"    />
     </resultMap>
 
     <sql id="selectPanoJ2Vo">
-        select id, panorama_id, region_code, subregion_code, date, latitude, longitude, elevation, north_rotation, next_id_1, next_region_code_1, next_id_2, next_region_code_2, geom from pano_j2
+        select id, panorama_id, region_code, subregion_code, date, latitude, longitude, elevation, north_rotation, next_id_1, north_rotation_1, next_id_2, north_rotation_2, geom from pano_j2
     </sql>
 
     <select id="selectPanoJ2List" parameterType="PanoJ2" resultMap="PanoJ2Result">
@@ -37,9 +37,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="elevation != null "> and elevation = #{elevation}</if>
             <if test="northRotation != null "> and north_rotation = #{northRotation}</if>
             <if test="nextId1 != null "> and next_id_1 = #{nextId1}</if>
-            <if test="nextRegionCode1 != null  and nextRegionCode1 != ''"> and next_region_code_1 = #{nextRegionCode1}</if>
+            <if test="northRotation1 != null  and northRotation1 != ''"> and north_rotation_1 = #{northRotation1}</if>
             <if test="nextId2 != null "> and next_id_2 = #{nextId2}</if>
-            <if test="nextRegionCode2 != null  and nextRegionCode2 != ''"> and next_region_code_2 = #{nextRegionCode2}</if>
+            <if test="northRotation2 != null  and northRotation2 != ''"> and north_rotation_2 = #{northRotation2}</if>
             <if test="geom != null  and geom != ''"> and geom = #{geom}</if>
         </where>
     </select>
@@ -62,9 +62,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="elevation != null">elevation,</if>
             <if test="northRotation != null">north_rotation,</if>
             <if test="nextId1 != null">next_id_1,</if>
-            <if test="nextRegionCode1 != null">next_region_code_1,</if>
+            <if test="northRotation1 != null">north_rotation_1,</if>
             <if test="nextId2 != null">next_id_2,</if>
-            <if test="nextRegionCode2 != null">next_region_code_2,</if>
+            <if test="northRotation2 != null">north_rotation_2,</if>
             <if test="geom != null">geom,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -78,9 +78,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="elevation != null">#{elevation},</if>
             <if test="northRotation != null">#{northRotation},</if>
             <if test="nextId1 != null">#{nextId1},</if>
-            <if test="nextRegionCode1 != null">#{nextRegionCode1},</if>
+            <if test="northRotation1 != null">#{northRotation1},</if>
             <if test="nextId2 != null">#{nextId2},</if>
-            <if test="nextRegionCode2 != null">#{nextRegionCode2},</if>
+            <if test="northRotation2 != null">#{northRotation2},</if>
             <if test="geom != null">#{geom},</if>
          </trim>
     </insert>
@@ -97,9 +97,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="elevation != null">elevation = #{elevation},</if>
             <if test="northRotation != null">north_rotation = #{northRotation},</if>
             <if test="nextId1 != null">next_id_1 = #{nextId1},</if>
-            <if test="nextRegionCode1 != null">next_region_code_1 = #{nextRegionCode1},</if>
+            <if test="northRotation1 != null">north_rotation_1 = #{northRotation1},</if>
             <if test="nextId2 != null">next_id_2 = #{nextId2},</if>
-            <if test="nextRegionCode2 != null">next_region_code_2 = #{nextRegionCode2},</if>
+            <if test="northRotation2 != null">north_rotation_2 = #{northRotation2},</if>
             <if test="geom != null">geom = #{geom},</if>
         </trim>
         where id = #{id}

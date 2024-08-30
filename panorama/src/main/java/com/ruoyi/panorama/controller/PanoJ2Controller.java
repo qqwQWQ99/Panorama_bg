@@ -2,6 +2,8 @@ package com.ruoyi.panorama.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ruoyi.panorama.result.PanoImageResult;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -122,7 +124,7 @@ public class PanoJ2Controller extends BaseController
     }
 
     @GetMapping("/getPano")
-    public ResponseEntity<Resource> getImage(Long id) {
+    public PanoImageResult getImage(Long id) {
         return panoJ2Service.getImage(id);
     }
 

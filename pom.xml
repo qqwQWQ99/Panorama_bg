@@ -199,7 +199,6 @@
         <module>ruoyi-generator</module>
         <module>ruoyi-common</module>
         <module>panorama</module>
-        <module>panorama</module>
     </modules>
     <packaging>pom</packaging>
 

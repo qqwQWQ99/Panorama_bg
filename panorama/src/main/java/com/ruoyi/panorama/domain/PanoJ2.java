@@ -39,11 +39,11 @@ public class PanoJ2 extends BaseEntity
 
     /** 纬度 */
     @Excel(name = "纬度")
-    private String latitude;
+    private Float latitude;
 
     /** 经度 */
     @Excel(name = "经度")
-    private String longitude;
+    private Float longitude;
 
     /** 海拔 */
     @Excel(name = "海拔")
@@ -57,13 +57,13 @@ public class PanoJ2 extends BaseEntity
     private Long nextId1;
 
     /** 相邻大区代码1 */
-    private String nextRegionCode1;
+    private Float northRotation1;
 
     /** 相邻id2 */
     private Long nextId2;
 
     /** 相邻大区代码2 */
-    private String nextRegionCode2;
+    private Float northRotation2;
 
     /** 空间数据 */
     private String geom;
@@ -113,21 +113,21 @@ public class PanoJ2 extends BaseEntity
     {
         return date;
     }
-    public void setLatitude(String latitude) 
+    public void setLatitude(Float latitude)
     {
         this.latitude = latitude;
     }
 
-    public String getLatitude() 
+    public Float getLatitude()
     {
         return latitude;
     }
-    public void setLongitude(String longitude) 
+    public void setLongitude(Float longitude)
     {
         this.longitude = longitude;
     }
 
-    public String getLongitude() 
+    public Float getLongitude()
     {
         return longitude;
     }
@@ -158,14 +158,14 @@ public class PanoJ2 extends BaseEntity
     {
         return nextId1;
     }
-    public void setNextRegionCode1(String nextRegionCode1) 
+    public void setNorthRotation1(Float northRotation1)
     {
-        this.nextRegionCode1 = nextRegionCode1;
+        this.northRotation1 = northRotation1;
     }
 
-    public String getNextRegionCode1() 
+    public Float getNorthRotation1()
     {
-        return nextRegionCode1;
+        return northRotation1;
     }
     public void setNextId2(Long nextId2) 
     {
@@ -176,14 +176,14 @@ public class PanoJ2 extends BaseEntity
     {
         return nextId2;
     }
-    public void setNextRegionCode2(String nextRegionCode2) 
+    public void setNorthRotation2(Float northRotation2)
     {
-        this.nextRegionCode2 = nextRegionCode2;
+        this.northRotation2 = northRotation2;
     }
 
-    public String getNextRegionCode2() 
+    public Float getNorthRotation2()
     {
-        return nextRegionCode2;
+        return northRotation2;
     }
     public void setGeom(String geom) 
     {
@@ -208,9 +208,9 @@ public class PanoJ2 extends BaseEntity
             .append("elevation", getElevation())
             .append("northRotation", getNorthRotation())
             .append("nextId1", getNextId1())
-            .append("nextRegionCode1", getNextRegionCode1())
+            .append("nextRegionCode1", getNorthRotation1())
             .append("nextId2", getNextId2())
-            .append("nextRegionCode2", getNextRegionCode2())
+            .append("nextRegionCode2", getNorthRotation2())
             .append("geom", getGeom())
             .toString();
     }
